@@ -2,11 +2,9 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
+description: Material for TN
 nav: true
 nav_order: 6
 ---
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
-
-Organize your courses by years, topics, or universities, however you like!
+I teach [Theoretical Neuroscience](https://www.gatsby.ucl.ac.uk/teaching/courses/tn1-2025/index.html) at Gatsby in second term. Some notes will appear here in the future. 

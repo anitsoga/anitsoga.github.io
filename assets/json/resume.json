@@ -1,36 +1,37 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Agostina Palmigiano",
+    "label": "",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "a.palmigiano@ucl.ac.uk",
+    "phone": "",
+    "url": "",
+    "Place of Birth": "Buenos Aires, Argentina",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "25 Howland St",
+      "postalCode": "W1T 4JG",
+      "city": "London",
+      "countryCode": "UK",
+      "region": "England"
+	  THIS LINE WILL MAKE IT CRASH AND USE THE OTHER DEFAULT
     },
     "profiles": [
       {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
+        "network": "BlueSky",
+        "username": "apalmigiano",
+        "url": "https://bsky.app/profile/apalmigiano.bsky.social"
       }
     ]
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "name": "Gatsby Computational Neuroscience Unit",
+      "position": "Lecturer of Theoretical Neuroscience",
+      "url": "https://profiles.ucl.ac.uk/97826-agostina-palmigiano",
+      "startDate": "2024-01-17",
+      "endDate": "Present",
+      "summary": "",
+      "highlights": ""
     }
   ],
   "volunteer": [

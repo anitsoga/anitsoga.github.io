@@ -1,9 +1,6 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"NatNeuro":
+  url: https://www.nature.com/neuro/
 
-"PhysRev":
-  url: https://journals.aps.org/
-
-"Vision":
+"eLife":
+  url: https://elifesciences.org
   color: "#009f36"
