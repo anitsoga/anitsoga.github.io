@@ -13,7 +13,6 @@
       "city": "London",
       "countryCode": "UK",
       "region": "England"
-	  THIS LINE WILL MAKE IT CRASH AND USE THE OTHER DEFAULT
     },
     "profiles": [
       {
