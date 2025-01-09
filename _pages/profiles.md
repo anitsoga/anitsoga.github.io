@@ -16,7 +16,7 @@ profiles:
     more_info: >
       <p>Lecturer</p>
   - align: left
-    image: arthur_pic.jpg
+    image: arthur_pic.png
     content: about_arthur.md
     image_circular: false # crops the image to make it circular
     more_info: >
