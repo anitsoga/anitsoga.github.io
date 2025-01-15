@@ -1,1 +1,1 @@
-[Arthur Pellegrino](https://arthur-pe.github.io) studied Math in the university of Boulder and did his graduate studies at the University of Edinburg under the supervision of Angus Chadwick. 
+Arthur Pellegrino studied Math in the university of Boulder and did his graduate studies at the University of Edinburg under the supervision of Angus Chadwick. 
