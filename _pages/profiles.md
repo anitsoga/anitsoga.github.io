@@ -21,5 +21,25 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Postdoc</p>
-
+  - align: right
+    image: Jan_pic.jpg
+    content: about_Jan.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>PhD student</p>
+    - align: left
+    image: Jake_pic.jpg
+    content: about_Jake.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>Research Intern</p>
+           - align: right
+    image: hoyin_pic.jpg
+    content: about_HoYin.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>Lab Affiliate</p>
+      
+      
+      
 ---

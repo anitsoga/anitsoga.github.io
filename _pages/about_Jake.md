@@ -1,0 +1,1 @@
+Jake Laherty studied Neuroscience and Data Science at the University of Sydney. He is interested in the theoretical foundations of learning and the necessary conditions for intelligence.

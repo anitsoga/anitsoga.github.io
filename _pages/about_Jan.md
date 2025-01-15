@@ -1,0 +1,1 @@
+[Jan Bauer](https://japhba.github.io)  studied physics at RWTH Aachen University, Germany, where he worked with Moritz Helias. He later collaborated with Jonathan Kadmon at ELSC, Hebrew University, before joining the Gatsby Unit as a PhD student.
