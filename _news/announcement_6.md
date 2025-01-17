@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Agos will give a talk at the Cosyne workshops
-date: 2025-03-31 
+date: 2024-12-19 
 inline: false
 related_posts: false
 ---
