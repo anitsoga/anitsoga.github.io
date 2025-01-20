@@ -1,1 +1,2 @@
-[Jan Bauer](https://japhba.github.io)  studied Physics at RWTH Aachen University, Germany, where he worked with Moritz Helias. He later collaborated with Jonathan Kadmon at ELSC, Hebrew University, before joining the Gatsby Unit.
+[Jan Bauer](https://japhba.github.io)  is interested in the core mechanisms behind learning in neural networks, in particular how stability and flexibility are balanced. 
+He studied Physics at RWTH Aachen University, Germany, where he worked with Moritz Helias. Now as part of the Gatsby Unit, he also is in active collaboration with Jonathan Kadmon at ELSC at the Hebrew University. 
