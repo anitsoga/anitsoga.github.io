@@ -39,4 +39,10 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Lab Affiliate</p>
+  - align: left
+    image: Tuan_pic.jpg
+    content: about_Tuan.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>Lab Affiliate</p>      
 ---
