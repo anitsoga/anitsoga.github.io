@@ -32,7 +32,7 @@ profiles:
     content: about_Melina.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>Research Intern</p>
+      <p>ML MSc student</p>
   - align: right
     image: Jake_pic.jpg
     content: about_Jake.md
@@ -40,7 +40,7 @@ profiles:
     more_info: >
       <p>Research Intern</p>
   - align: left
-    image: Hoyin_pic.jpg
+    image: HoYin_pic.jpg
     content: about_HoYin.md
     image_circular: false # crops the image to make it circular
     more_info: >
