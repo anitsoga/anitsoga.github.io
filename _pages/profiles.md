@@ -10,14 +10,14 @@ profiles:
   # if you want to include more than one profile, just replicate the following block
   # and create one content file for each profile inside _pages/
   - align: right
-    image: agos_pic_new.jpg
-    content: about_agos.md
+    image: Agos_pic.jpg
+    content: about_Agos.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Lecturer</p>
   - align: left
-    image: arthur_pic.png
-    content: about_arthur.md
+    image: Arthur_pic.png
+    content: about_Arthur.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Postdoc</p>
@@ -28,18 +28,24 @@ profiles:
     more_info: >
       <p>PhD student</p>
   - align: left
+    image: Melina_pic.jpg
+    content: about_Melina.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>Research Intern</p>
+  - align: right
     image: Jake_pic.jpg
     content: about_Jake.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Research Intern</p>
-  - align: right
-    image: hoyin_pic.jpg
+  - align: left
+    image: Hoyin_pic.jpg
     content: about_HoYin.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Lab Affiliate</p>
-  - align: left
+  - align: right
     image: Tuan_pic.jpg
     content: about_Tuan.md
     image_circular: false # crops the image to make it circular
