@@ -1,0 +1,1 @@
+Paul Chainieux studied Physics at King’s College London and is currently pursuing an MSc in Machine Learning at UCL. His research interests lie in biologically inspired models and the insights biologically plausible constraints can offer into the brain’s learning processes.

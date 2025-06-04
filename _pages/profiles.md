@@ -27,15 +27,27 @@ profiles:
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>PhD student</p>
-  - align: right
+  - align: left
     image: Jake_pic.jpg
     content: about_Jake.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Incoming PhD student</p>
+  - align: right
+    image: Gianluca_pic.jpg
+    content: about_Gianluca.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>ML MSc student</p>
   - align: left
     image: Melina_pic.jpg
     content: about_Melina.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>ML MSc student</p>      
+  - align: right
+    image: Paul_pic.jpg
+    content: about_Paul.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>ML MSc student</p>
