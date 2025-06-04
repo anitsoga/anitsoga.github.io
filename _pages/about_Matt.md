@@ -1,0 +1,1 @@
+Matthew Tilley studied Physics at Imperial College London, completing a PhD in High Energy Physics under Professor Mitesh Patel as part of the LHCb collaboration. He later transitioned into neuroscience and machine learning, conducting postdoctoral research with Professor David Freedman at the University of Chicago. He joined the Lab in March 2025.

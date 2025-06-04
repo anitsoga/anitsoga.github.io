@@ -16,26 +16,38 @@ profiles:
     more_info: >
       <p>Lecturer</p>
   - align: left
+    image: Matt_pic.jpg
+    content: about_Matt.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>Postdoc</p>
+  - align: right
     image: Arthur_pic.jpg
     content: about_Arthur.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Postdoc</p>
-  - align: right
+  - align: left
     image: Jan_pic.jpg
     content: about_Jan.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>PhD student</p>
-  - align: left
+  - align: right
     image: Jake_pic.jpg
     content: about_Jake.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Incoming PhD student</p>
-  - align: right
+  - align: left
     image: Gianluca_pic.jpg
     content: about_Gianluca.md
+    image_circular: false # crops the image to make it circular
+    more_info: >
+      <p>ML MSc student</p>  
+  - align: right
+    image: Paul_pic.jpg
+    content: about_Paul.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>ML MSc student</p>
@@ -44,20 +56,14 @@ profiles:
     content: about_Melina.md
     image_circular: false # crops the image to make it circular
     more_info: >
-      <p>ML MSc student</p>      
+      <p>ML MSc student</p>    
   - align: right
-    image: Paul_pic.jpg
-    content: about_Paul.md
-    image_circular: false # crops the image to make it circular
-    more_info: >
-      <p>ML MSc student</p>
-  - align: left
     image: HoYin_pic.jpg
     content: about_HoYin.md
     image_circular: false # crops the image to make it circular
     more_info: >
       <p>Lab Affiliate</p>
-  - align: right
+  - align: left
     image: Tuan_pic.jpg
     content: about_Tuan.md
     image_circular: false # crops the image to make it circular
