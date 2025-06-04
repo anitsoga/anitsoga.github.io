@@ -1,1 +1,1 @@
-Arthur Pellegrino studied Math in the university of Boulder and did his graduate studies at the University of Edinburg under the supervision of Angus Chadwick. 
+Arthur Pellegrino studied Math in the university of Boulder and did his graduate studies at the University of Edinburg under the supervision of Angus Chadwick. He joined the Lab in January 2025.
