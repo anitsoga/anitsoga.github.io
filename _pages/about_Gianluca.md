@@ -1,1 +1,0 @@
-Gianluca Carrozzo earned his undergraduate degree in Mathematics and Physics from Durham University. He is interested in using theoretical frameworks to develop interpretable, predictive models of neural computation.

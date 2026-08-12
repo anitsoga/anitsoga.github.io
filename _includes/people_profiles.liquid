@@ -1,0 +1,36 @@
+{% comment %}
+  A list of members, each rendered as a small left-hand photo beside the bio.
+  Each entry: { image, content, more_info, image_circular } — all optional.
+{% endcomment %}
+{% for profile in include.profiles %}
+  <div class="person">
+    {% if profile.image %}
+      {% assign profile_image_path = profile.image | prepend: 'assets/img/' %}
+      {% comment %}
+        Skip the photo when the file is not in the repo yet, so that a member
+        added before their picture arrives renders without a broken image.
+      {% endcomment %}
+      {% capture profile_image_exists %}{% file_exists {{ profile_image_path }} %}{% endcapture %}
+      {% if profile_image_exists == 'true' %}
+        {% if profile.image_circular %}
+          {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+        {% else %}
+          {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+        {% endif %}
+        <div class="person-photo">
+          {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes="140px" alt=profile.image %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="person-body">
+      {% if profile.more_info %}
+        <div class="person-role">{{ profile.more_info }}</div>
+      {% endif %}
+      {% if profile.content %}
+        {% capture profile_content %}{% include_relative {{ profile.content }} %}{% endcapture %}
+        {{ profile_content | markdownify }}
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}

@@ -227,6 +227,107 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// People page
+//
+// Font-size hierarchy, largest to smallest: section (h2, left at the theme's
+// default 2rem) > subsection (h3) > role label. Font family is inherited
+// throughout, so only the sizes distinguish the levels.
+
+// Section titles: the People page sections, and the homepage
+// News / Latest Posts / Selected Publications headings. Same family and size
+// as the theme's h2 — only the weight is raised.
+.section-title,
+.people-section {
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+// On the People page the first section sits at the very top, so it needs no
+// leading space. The homepage headings follow body text and keep theirs.
+.people-section:first-of-type {
+  margin-top: 0;
+}
+
+.people-subsection {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+  margin-top: 2rem;
+}
+
+// A member entry: small photo on the left, role and bio to the right.
+
+.person {
+  align-items: flex-start;
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.person-photo {
+  flex: 0 0 auto;
+  width: 140px;
+
+  figure {
+    margin-bottom: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.person-body {
+  flex: 1 1 auto;
+  min-width: 0;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.person-role {
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+
+  p {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
+// Plain name lists, for people without a photo or bio.
+
+.people-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+
+  > li {
+    margin-bottom: 0.85rem;
+  }
+
+  .people-list-name {
+    font-weight: normal;
+  }
+
+  .people-list-detail {
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .person {
+    gap: 1rem;
+  }
+
+  .person-photo {
+    width: 90px;
+  }
+}
+
 .post-description {
   margin-bottom: 2rem;
   font-size: 0.875rem;

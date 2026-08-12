@@ -1,0 +1,23 @@
+{% comment %}
+  A plain list of people, for sections that have no photo or bio page.
+  Each entry: { name, affiliation, note, url } — only `name` is required.
+{% endcomment %}
+<ul class="people-list">
+  {% for person in include.people %}
+    <li>
+      <span class="people-list-name">
+        {% if person.url %}
+          <a href="{{ person.url }}">{{ person.name }}</a>
+        {% else %}
+          {{ person.name }}
+        {% endif %}
+      </span>
+      {% if person.affiliation %}
+        <div class="people-list-detail">{{ person.affiliation }}</div>
+      {% endif %}
+      {% if person.note %}
+        <div class="people-list-detail">{{ person.note }}</div>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

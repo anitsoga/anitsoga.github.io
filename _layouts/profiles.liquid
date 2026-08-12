@@ -1,36 +1,36 @@
 ---
 layout: page
 ---
+{% comment %}
+  Renders `page.profile_sections`, a list of sections. Each section has a `title`
+  plus any combination of:
+    profiles:    photo + bio entries (see _includes/people_profiles.liquid)
+    people:      a plain name / affiliation list (see _includes/people_list.liquid)
+    subsections: nested { title, profiles | people } groups
+  Subsections take either shape too, so a group can be photo entries (current
+  members) or a plain list (past members) as needed.
+{% endcomment %}
 <div class="post">
   <article>
-    {% if page.profiles %}
-      {% for profile in page.profiles %}
-        <hr>
-        <div class="profile float-{% if profile.align == 'left' %}left{% else %}right{% endif %}">
-          {% if profile.image %}
-            {% assign profile_image_path = profile.image | prepend: 'assets/img/' %}
-            {% if profile.image_circular %}
-              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-            {% else %}
-              {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
-            {% endif %}
-            {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
-            {% include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=profile.image %}
-          {% endif %}
-          {% if profile.more_info %}
-            <div class="more-info">{{ profile.more_info }}</div>
-          {% endif %}
-        </div>
+    {% for section in page.profile_sections %}
+      <h2 class="people-section">{{ section.title }}</h2>
 
-        <div class="clearfix">
-          {% if profile.content %}
-            {% capture profile_content %}{% include_relative {{ profile.content }} %}{% endcapture %}
-            {{ profile_content | markdownify }}
-          {% else %}
-            {{ content }}
-          {% endif %}
-        </div>
+      {% if section.profiles %}
+        {% include people_profiles.liquid profiles=section.profiles %}
+      {% endif %}
+      {% if section.people %}
+        {% include people_list.liquid people=section.people %}
+      {% endif %}
+
+      {% for subsection in section.subsections %}
+        <h3 class="people-subsection">{{ subsection.title }}</h3>
+        {% if subsection.profiles %}
+          {% include people_profiles.liquid profiles=subsection.profiles %}
+        {% endif %}
+        {% if subsection.people %}
+          {% include people_list.liquid people=subsection.people %}
+        {% endif %}
       {% endfor %}
-    {% endif %}
+    {% endfor %}
   </article>
 </div>

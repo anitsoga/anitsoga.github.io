@@ -1,5 +1,6 @@
 ---
 layout: post
+slug: announcement_6 # preserves the original /news/announcement_6/ URL
 title: Agos will give a talk at the Cosyne workshops
 date: 2024-12-19 
 inline: false

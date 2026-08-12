@@ -1,0 +1,1 @@
+Ravi Thakrar studied Mathematics and Economics at the London School of Economics and is currently pursuing an MSc in Mathematical Modelling at UCL. He is currently interested in the geometry of learned representations, and in what latent dynamical models reveal about structure in high-dimensional data.

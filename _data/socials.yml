@@ -45,7 +45,7 @@ scholar_userid: hLgAfHwAAAAJ # your Google Scholar ID
 # x_username: # your X handle
 # youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
 # zotero_username: # your zotero username
-custom_social: # can be any name here other than the ones already defined above
-  logo: https://profiles.ucl.ac.uk/97826-agostina-palmigiano/photo # can be png, svg, jpg
-  title: Custom Social
+ucl_profile: # can be any name here other than the ones already defined above
+  icon: fa-solid fa-building-columns # a Font Awesome / academicons class; use `logo:` instead for an image file
+  title: UCL Profile
   url: https://profiles.ucl.ac.uk/97826-agostina-palmigiano

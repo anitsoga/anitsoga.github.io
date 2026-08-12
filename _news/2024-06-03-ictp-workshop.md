@@ -1,5 +1,6 @@
 ---
 layout: post
+slug: announcement_3 # preserves the original /news/announcement_3/ URL
 title: We organized a workshop on Recent Advances in Theoretical Neuroscience at ICTP
 date: 2024-06-03 
 inline: false
