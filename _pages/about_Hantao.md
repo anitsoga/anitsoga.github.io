@@ -1,0 +1,1 @@
+Hantao Zhang studied Statistics at the University of Warwick and Yale University. He is interested in the computational foundations of biological and machine intelligence. His recent work focuses on the mechanisms underlying flexible working-memory control and decision-making.

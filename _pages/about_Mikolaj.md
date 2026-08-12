@@ -1,0 +1,1 @@
+Mikolaj Sobieralski is a final year student of MSci Neuroscience at UCL. His research interests are neural representations during learning and biologically plausible and interpretable neural networks.

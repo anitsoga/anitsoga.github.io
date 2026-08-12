@@ -1,0 +1,1 @@
+Pratyusha Chowdhury completed her PhD in Theoretical High Energy Physics at the University of Southampton, following her undergraduate and master’s studies in India. She is currently interested in using tools from statistical field theory and information theory to study neural computation and learning dynamics in both biological and artificial systems.
