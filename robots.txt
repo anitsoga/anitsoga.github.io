@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://anitsoga.github.io/sitemap.xml
+Sitemap: https://palmigianolab.com/sitemap.xml
