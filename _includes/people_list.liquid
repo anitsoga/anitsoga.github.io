@@ -1,10 +1,15 @@
 {% comment %}
   A plain list of people, for sections that have no photo or bio page.
-  Each entry: { name, affiliation, note, url } — only `name` is required.
+  Each entry: { name, date, affiliation, note, url } — only `name` is required.
+  When `date` is present the row becomes two columns: the date on the left, and
+  the name with any details below it aligned together in the second column.
 {% endcomment %}
 <ul class="people-list">
   {% for person in include.people %}
-    <li>
+    <li{% if person.date %} class="has-date"{% endif %}>
+      {% if person.date %}
+        <span class="people-list-date">{{ person.date }}</span>
+      {% endif %}
       <span class="people-list-name">
         {% if person.url %}
           <a href="{{ person.url }}">{{ person.name }}</a>

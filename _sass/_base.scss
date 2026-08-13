@@ -233,12 +233,21 @@ ul.task-list input[type="checkbox"] {
 // default 2rem) > subsection (h3) > role label. Font family is inherited
 // throughout, so only the sizes distinguish the levels.
 
-// Section titles: the People page sections, and the homepage
-// News / Latest Posts / Selected Publications headings. Same family and size
-// as the theme's h2 — only the weight is raised.
+// Titles across the site share one treatment, so they cannot drift apart:
+// the theme's font family, at the h2 size, bold. This covers page titles
+// (.post-title), the homepage News / Selected Publications headings
+// (.section-title) and the People page sections (.people-section).
+.post-title,
 .section-title,
 .people-section {
+  font-size: 2rem;
   font-weight: bold;
+}
+
+// Only the in-page headings need leading space; a page title already has the
+// header's own spacing above it.
+.section-title,
+.people-section {
   margin-top: 3rem;
 }
 
@@ -248,6 +257,24 @@ ul.task-list input[type="checkbox"] {
   margin-top: 0;
 }
 
+// Embedded map (Contact page). Fixed height with fluid width, rather than the
+// 600x450 Google's embed code hands you, which overflows on a phone.
+.map-embed {
+  border: 0;
+  height: 400px;
+  margin-top: 1.5rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .map-embed {
+    height: 280px;
+  }
+}
+
+// One level down: subsection headings, clearly smaller than a section title.
+.subsection-title,
 .people-subsection {
   font-size: 1.25rem;
   font-weight: bold;
@@ -308,13 +335,38 @@ ul.task-list input[type="checkbox"] {
     margin-bottom: 0.85rem;
   }
 
+  // Rows carrying a date become two columns: the date sits in the left column,
+  // and the name plus anything below it share the second column, so details
+  // align to the name rather than to the date.
+  > li.has-date {
+    column-gap: 1.25rem;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+  }
+
+  .people-list-date {
+    color: var(--global-text-color-light);
+    font-variant-numeric: tabular-nums;
+    grid-column: 1;
+    white-space: nowrap;
+  }
+
   .people-list-name {
     font-weight: normal;
+    grid-column: 2;
   }
 
   .people-list-detail {
     color: var(--global-text-color-light);
     font-size: 0.9rem;
+    grid-column: 2;
+  }
+}
+
+// Too narrow for two columns: let the date sit above the name instead.
+@media (max-width: 575px) {
+  .people-list > li.has-date {
+    display: block;
   }
 }
 
@@ -502,23 +554,25 @@ ul.task-list input[type="checkbox"] {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    // Theme default is 4rem (64px), which dominates the page; the image and
+    // svg sizes below are scaled to match.
+    font-size: 2rem;
 
     a {
       img {
-        width: 3.2rem;
-        height: 3.2rem;
-        margin-bottom: 1rem;
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-bottom: 0.5rem;
       }
 
       svg {
-        width: 3.5rem;
-        height: 4rem;
-        margin-bottom: 0.5rem;
+        width: 1.75rem;
+        height: 2rem;
+        margin-bottom: 0.25rem;
 
         image {
-          width: 3.5rem;
-          height: 3.5rem;
+          width: 1.75rem;
+          height: 1.75rem;
         }
       }
 

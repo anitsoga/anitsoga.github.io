@@ -1,13 +1,13 @@
 ---
 layout: post
 slug: announcement_3 # preserves the original /news/announcement_3/ URL
-title: We organized a workshop on Recent Advances in Theoretical Neuroscience at ICTP
-date: 2024-06-03 
+title: We organised a workshop on Recent Advances in Theoretical Neuroscience at ICTP
+date: 2024-06-03
 inline: false
 related_posts: false
 ---
 
 
-Together with with [Alessandro Ingrosso](https://www.ru.nl/en/people/ingrosso-a), [Sebastian Goldt](https://datascience.sissa.it/person/16/sebastian-goldt) and [Francesca Mastrogiuseppe](https://fmastrogiuseppe.github.io) we organized a workshop on [Recent Advances in Theoretical Neuroscience](https://indico.ictp.it/event/10481/) at ICTP. 
+Together with [Alessandro Ingrosso](https://www.ru.nl/en/people/ingrosso-a), [Sebastian Goldt](https://datascience.sissa.it/person/16/sebastian-goldt) and [Francesca Mastrogiuseppe](https://fmastrogiuseppe.github.io) we organised a workshop on [Recent Advances in Theoretical Neuroscience](https://indico.ictp.it/event/10481/) at ICTP.
 
-You can find the speaker list and a link to their slides/ talk recording [here](https://indico.ictp.it/event/10481/speakers) 
+You can find the speaker list and a link to their slides/talk recording [here](https://indico.ictp.it/event/10481/speakers)

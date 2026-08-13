@@ -35,14 +35,24 @@ profile_sections:
         profiles:
           - image: Jan_pic.jpg
             content: about_Jan.md
+            more_info: >
+              <p>Gatsby-only Programme, cohort of 2024</p>
           - image: Mateo_pic.jpg
             content: about_Mateo.md
+            more_info: >
+              <p>Gatsby-only Programme, cohort of 2024</p>
           - image: Jake_pic.jpg
             content: about_Jake.md
+            more_info: >
+              <p>Joint Gatsby–SWC Programme, co-advised with Tiago Branco, cohort of 2025</p>
           - image: Ale_pic.jpg
             content: about_Ale.md
+            more_info: >
+              <p>Gatsby-only Programme, co-advised with Leena Chennuru Vankadara, cohort of 2025</p>
           - image: Hantao_pic.jpg
             content: about_Hantao.md
+            more_info: >
+              <p>Gatsby-only Programme, cohort of 2026</p>
 
       - title: MSc Students
         profiles:
@@ -61,7 +71,7 @@ profile_sections:
           - name: Jakub Wornbard
             affiliation: "Gretton's Lab"
 
-  - title: Collaborators
+  - title: External Collaborators
     people:
       - name: Moritz Helias
         affiliation: >-
@@ -70,7 +80,6 @@ profile_sections:
       - name: Kenneth D. Miller
         affiliation: Center for Theoretical Neuroscience, Columbia University
       - name: Arthur Pellegrino
-        url: https://sites.google.com/view/arthur-pellegrino/home
         affiliation: Data Science Center, École Normale Supérieure, PSL
 
   - title: Past Members
@@ -79,19 +88,40 @@ profile_sections:
         people:
           - name: Arthur Pellegrino
             url: https://sites.google.com/view/arthur-pellegrino/home
+            date: "01/2025 – 10/2025"
             note: "Current position: Data Science Center, École Normale Supérieure, PSL"
       - title: PhD Students
         people:
           - name: Ho Yin Chau
             url: https://scholar.google.com/citations?user=rNnV8F8AAAAJ&hl=en
+            date: "09/2019 – 05/2026"
+            affiliation: Joint supervision with Kenneth D. Miller, Columbia University
             note: "Current position: Postdoc in Srdjan Ostojic's Lab at ENS"
           - name: Tuan Nguyen
             url: https://scholar.google.com/citations?user=tsjlBDsAAAAJ&hl=en
+            date: "09/2021 – 11/2025"
+            affiliation: Joint supervision with Kenneth D. Miller, Columbia University
             note: "Current position: Postdoc in Tatiana Engel's Lab at Princeton"
       - title: MSc Students
         people:
           - name: Gianluca Carrozzo
+            date: "06/2025 – 09/2025"
           - name: Paul Chainieux
+            date: "06/2025 – 09/2025"
           - name: Melina Laimon
+            date: "06/2025 – 09/2025"
           - name: "David O'Neill"
+            date: "06/2025 – 09/2025"
+      - title: Gatsby Research Interns
+        people:
+          - name: Rebecca Phelan
+            date: "06/2024 – 09/2024"
+          - name: Luke Johnston
+            date: "10/2024 – 12/2024"
+          - name: Jake Laherty
+            date: "01/2025 – 05/2025"
+          - name: Marco Minerva
+            date: "09/2025 – 12/2025"
+          - name: Hantao Zhang
+            date: "01/2026 – 04/2026"
 ---

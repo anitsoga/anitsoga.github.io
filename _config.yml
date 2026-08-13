@@ -9,14 +9,15 @@ last_name: Theory Lab
 contact_note: >
   
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Lab webpage of the Palmigiano Lab at the Gatsby Computational Neuroscience Unit
+  Theoretical neuroscience at UCL's Gatsby Unit: how connectivity shapes neural population dynamics and representational geometry, and how learning reshapes them.
+  We combine theory with large-scale neural recordings and causal perturbation experiments to constrain models and distinguish between mechanisms.
 footer_text: >
 
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: theoretical neuroscience, computational neuroscience, deep learning, feature learning, neural networks, RNN, representational geometry, recurrent neural networks, learning theory, statistical physics, bayes, neural population dynamics, decision making, low-rank networks, optogenetics, holography, large-scale data, data analysis, machine learning, Gatsby Computational Neuroscience Unit, UCL
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: buddhabrot_icon.png # favicon: an image name in /assets/img/ (or a single emoji)
 
-url: https://anitsoga.github.io # the base hostname & protocol for your site
+url: https://palmigianolab.com # the base hostname & protocol for your site (the custom domain in CNAME, NOT the github.io host, or every page declares a canonical URL that redirects)
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: true # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -62,9 +63,9 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head (link previews when the site is shared)
 serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://palmigianolab.com/assets/img/Buddha_Big.jpg # The site-wide (default for all links) Open Graph preview image (must be an absolute URL)
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -86,7 +87,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Blog # blog_name will be displayed in your blog page
-blog_description: Some notes, insights and lectures notes from lab members
+blog_description: Some notes, insights and lecture notes from lab members
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 

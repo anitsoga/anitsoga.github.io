@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Arthur Pellegrino accepts a position as Fellow in AI at the École Normale Supérieure in Paris
+Arthur Pellegrino accepts a position as Fellow in AI at the École Normale Supérieure in Paris, France

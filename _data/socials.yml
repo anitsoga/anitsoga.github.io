@@ -20,7 +20,12 @@ github_username: Anitsoga # your GitHub user name
 # lastfm_id: # your lastfm id
 # lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 # leetcode_id: # your LeetCode id
-linkedin_username: agostina-palmigiano-297b3722 # your LinkedIn user name
+# Not `linkedin_username:` — that hardcodes www.linkedin.com in social.liquid.
+# A custom entry lets us give the exact profile URL.
+linkedin_profile:
+  icon: fa-brands fa-linkedin
+  title: LinkedIn
+  url: https://uk.linkedin.com/in/agostina-palmigiano-297b3722
 # mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 # medium_username: # your Medium username
 # orcid_id: # your ORCID ID

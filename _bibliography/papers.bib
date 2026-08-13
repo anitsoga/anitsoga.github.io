@@ -1,10 +1,55 @@
 ---
 ---
 
+% =============================================================================
+% ADDING A PUBLICATION
+%
+% Put new entries at the TOP of this file, newest first.
+%
+% The /publications/ page groups by year on its own, so file order does not
+% matter there. But the "Selected Publications" list on the home page uses
+% --group_by none (see _includes/selected_papers.liquid), which switches off
+% that sorting and falls back to the order entries appear here. An entry added
+% at the bottom therefore shows up last on the home page regardless of its year.
+%
+% Useful fields beyond the standard BibTeX ones:
+%   selected={true}      feature it on the home page
+%   preview={name.gif}   thumbnail, file in assets/img/publication_preview/
+%   abbr={...}           short venue label shown beside the entry
+%   html={...}           link button, e.g. a publisher or conference page
+%   doi={...}            renders a DOI link; prefer this over a bare url
+%   dimensions={true}    show the Dimensions citation badge
+%
+% A "%" comment is only valid BETWEEN entries, never inside one: a comment
+% within braces makes jekyll-scholar fail to parse the file, and it fails
+% SILENTLY, serving the previous build. If an edit here seems to have no
+% effect, check the server log for "Failed to parse BibTeX".
+% =============================================================================
+
+% TODO still needs an abstract.
+@inproceedings{bauer_unified_2026,
+	title = {A unified theory of feature learning in {RNNs} and {DNNs}},
+	author = {Bauer, Jan P. and Fischer, Kirsten and Helias, Moritz and Palmigiano, Agostina},
+	booktitle = {International Conference on Machine Learning (ICML)},
+	year = {2026},
+	arxiv = {2602.15593},
+	url = {https://icml.cc/virtual/2026/poster/61686},
+	html = {https://icml.cc/virtual/2026/poster/61686},
+	preview = {bauer.gif},
+	selected = {true},
+	dimensions = {true},
+}
+
  @article{Chau_Miller_Palmigiano_2024, 
  title={Exact linear theory of perturbation response in a space- and feature-dependent cortical circuit model}, 
- rights={http://creativecommons.org/licenses/by-nc-nd/4.0/}, url={http://biorxiv.org/lookup/doi/10.1101/2024.12.27.630558}, 
- DOI={10.1101/2024.12.27.630558}, 
+ rights={http://creativecommons.org/licenses/by-nc-nd/4.0/},
+ journal={Proceedings of the National Academy of Sciences},
+ volume={122},
+ number={31},
+ pages={e2426758122},
+ DOI={10.1073/pnas.2426758122},
+ url={https://doi.org/10.1073/pnas.2426758122},
+ preprint_doi={10.1101/2024.12.27.630558},
  abstract={What are the principles that govern the responses of cortical networks to
                     their inputs and the emergence of these responses from recurrent connectivity?
                     Recent experiments have probed these questions by measuring cortical responses
@@ -29,7 +74,7 @@
                     of perturbation responses in the presence vs. absence of visual
                     stimuli.},
                          author={Chau, Ho Yin and Miller, Kenneth D. and Palmigiano, Agostina},
-                          year={2024},
+                          year={2025},
                           dimensions={true},
          selected={true},
          preview={chau.gif}
@@ -77,6 +122,8 @@
 	title = {Common rules underlying optogenetic and behavioral modulation of responses in multi-cell-type {V1} circuits},
 	abstract = {The visual cortex receives non-sensory inputs containing behavioral and brain state information. Here we propose a parallel between optogenetic and behavioral modulations of activity and characterize their impact on cell-type-specific V1 processing under a common theoretical framework. We infer cell-type-specific circuitry from large-scale V1 recordings and demonstrate that, given strong recurrent excitation, the cell-type-specific responses imply key aspects of the known connectivity. In the inferred models, parvalbumin-expressing (PV), but not other, interneurons have responses to perturbations that we show theoretically imply that their activity stabilizes the circuit. We infer inputs that explain locomotion-induced changes in firing rates and find that, contrary to hypotheses of simple disinhibition, locomotory drive to VIP cells and to SOM cells largely cancel, with enhancement of excitatory-cell visual responses likely due to direct locomotory drive to them. We show that this SOM/VIP cancellation is a property emerging from V1 connectivity structure. 2 (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted January 22, 2023. ; https://doi.},
 	journal = {bioRxiv},
+	doi = {10.1101/2020.11.11.378729},
+	url = {https://doi.org/10.1101/2020.11.11.378729},
 	author = {Palmigiano, Agostina and Fumarola, Francesco and Mossing, Daniel P. and Kraynyukova, Nataliya and Adesnik, Hillel and Miller, Kenneth D.},
 	year = {2023},
 	pages = {1--59},
@@ -88,7 +135,8 @@
 
 @article{Wang2022,
 	title = {Targeted cortical stimulation reveals principles of cortical contextual interactions},
-	url = {https://www.biorxiv.org/content/10.1101/2022.06.22.497254v1%0Ahttps://www.biorxiv.org/content/10.1101/2022.06.22.497254v1.abstract},
+	url = {https://doi.org/10.1101/2022.06.22.497254},
+	doi = {10.1101/2022.06.22.497254},
 	abstract = {Cross-orientation suppression is a classic form of contextual normalization in visual cortex, yet the degree to which cortical circuits participate in the normalization computation is unclear. We visualized orientation maps of individual ferrets, and provided patterned optogenetic stimulation to both excitatory and inhibitory cells in orientation columns that either matched or were orthogonal to the preferred visual orientation of neurons recorded with electrodes. When visual or optogenetic stimulation of columns preferring one orientation was combined with optogenetic stimulation of columns preferring the orthogonal orientation, we observed less suppression than when orthogonal stimulation was provided visually, suggesting that cortical circuits do not provide a large fraction of visual cross-orientation suppression. Integration of visual and optogenetic signals was linear when neurons exhibited low firing rates and became sublinear when neurons exhibited higher firing rates. We probed the nature of sublinearities in cortex by examining the influence of optogenetic stimulation of cortical interneurons. We observed a range of responses, including evidence for paradoxical responses in which interneuron stimulation caused a decrease in inhibitory firing rate, presumably due to the withdrawal of recurrent excitation. These results are compatible with cortical circuits that exhibit strong recurrent excitation with stabilizing inhibition that provides normalization, albeit normalization that is too weak across columns to account for cross-orientation suppression.},
 	journal = {bioRxiv},
 	author = {Wang, Shen and Palmigiano, Agostina and Miller, Kenneth D. and Hooser, Stephen D. Van},
@@ -101,7 +149,7 @@
 
 @article{Mossing2021a,
 	title = {Antagonistic inhibitory subnetworks control cooperation and competition across cortical space},
-	url = {Antagonistic inhibitory subnetworks control cooperation and competition across cortical 2 space 3%0A4},
+	url = {https://doi.org/10.1101/2021.03.31.437953},
 	doi = {10.1101/2021.03.31.437953},
 	abstract = {The cortical microcircuit can dynamically adjust to dramatic changes in the strength, scale, and complexity of its input. In the primary visual cortex (V1), pyramidal cells (PCs) integrate widely across space when signals are weak, but integrate narrowly when signals are strong, a phenomenon known as contrast-dependent surround suppression. Theoretical work has proposed that local interneurons could mediate a shift from cooperation to competition of PCs across cortical space, underlying this computation. We combine calcium imaging and electrophysiology to constrain a stabilized superlinear network model that explains how the four principal cell types in layer 2/3 (L2/3) of mouse V1, somatostatin (SST), parvalbumin (PV), and vasoactive intestinal peptide (VIP) interneurons, and PCs, transform inputs from layer 4 (L4) PCs to encode drifting gratings of varying size and contrast. Using bidirectional optogenetic perturbations, we confirm key predictions of the model. Our data and modeling show that network nonlinearities set up by recurrent amplification mediate a shift from a positive PC-VIP feedback loop at small size and low contrast to a negative PC-SST feedback loop at large size and high contrast to support this flexible computation. This may represent a widespread mechanism for gating competition across cortical space to optimally meet task demands.Competing Interest StatementThe authors have declared no competing interest.},
 	journal = {bioRxiv},
@@ -155,8 +203,57 @@
   pages = {1014--1022},
   year={2017},
   doi={10.1038/nn.4569},
-  url= {http://www.ncbi.nlm.nih.gov/pubmed/28530664\%5Cnhttp://www.nature.com/doifinder/10.1038/nn.4569},
+  url = {https://doi.org/10.1038/nn.4569},
   dimensions={true},
   selected={true},
   preview={routing.gif},
 }
+
+% =============================================================================
+% ADDED FROM GOOGLE SCHOLAR. Metadata taken from the registered DOI record
+% where one exists. To feature an entry on the homepage add selected={true},
+% and preview={name.gif} with the file in assets/img/publication_preview/.
+% NOTE: in BibTeX a "%" comment is only valid BETWEEN entries, never inside
+% one, so the notes below sit above the entry they refer to.
+% =============================================================================
+
+% TODO needs an abstract and a preview image.
+@article{nguyen_theory_2025,
+	title = {Theory of interaction between untuned modulatory inputs and tuned sensory inputs},
+	author = {Nguyen, Tuan and Palmigiano, Agostina and Miller, Kenneth D.},
+	journal = {bioRxiv},
+	year = {2025},
+	doi = {10.1101/2025.04.28.651100},
+	url = {https://doi.org/10.1101/2025.04.28.651100},
+	dimensions = {true},
+}
+
+% TODO needs an abstract.
+@article{witt_controlling_2013,
+	title = {Controlling the oscillation phase through precisely timed closed-loop optogenetic stimulation: a computational study},
+	author = {Witt, Annette and Palmigiano, Agostina and Neef, Andreas and El Hady, Ahmed and Wolf, Fred and Battaglia, Demian},
+	journal = {Frontiers in Neural Circuits},
+	volume = {7},
+	pages = {49},
+	year = {2013},
+	doi = {10.3389/fncir.2013.00049},
+	url = {https://doi.org/10.3389/fncir.2013.00049},
+	preview = {witt.gif},
+	dimensions = {true},
+}
+
+% TODO needs an abstract.
+@article{palmigiano_stability_2012,
+	title = {Stability of synchronization clusters and seizurability in temporal lobe epilepsy},
+	author = {Palmigiano, Agostina and Pastor, Jes\'{u}s and Garc\'{i}a de Sola, Rafael and Ortega, Guillermo J.},
+	journal = {PLoS ONE},
+	volume = {7},
+	number = {7},
+	pages = {e41799},
+	year = {2012},
+	doi = {10.1371/journal.pone.0041799},
+	url = {https://doi.org/10.1371/journal.pone.0041799},
+	preview = {epilepsy.gif},
+	dimensions = {true},
+}
+
