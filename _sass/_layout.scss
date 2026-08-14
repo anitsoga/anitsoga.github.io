@@ -18,8 +18,9 @@ body {
 }
 
 body.fixed-top-nav {
-  // Add some padding for the nav-bar.
-  padding-top: 76px;
+  // Add some padding for the nav-bar. Must match the navbar's height, which is
+  // pinned in _base.scss so it is the same on every page.
+  padding-top: 91px;
 }
 
 // Pages other than About carry the two-line lab name in the navbar, which makes

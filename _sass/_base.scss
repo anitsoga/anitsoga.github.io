@@ -493,16 +493,18 @@ ul.task-list input[type="checkbox"] {
   // the gap between the lines. Top-align the row instead so they sit on the
   // first line, and nudge them down to share its baseline. Scoped with :has()
   // so the About page, whose brand is the social icons, keeps its centring.
-  // Bootstrap's default navbar is tight to the top edge; give every page the
-  // same breathing room above and below the nav row.
+  // The navbar must be identical on every page, otherwise the header and all
+  // the content below it jump as you navigate: About has no brand, every other
+  // page carries the two-line lab name. So reserve the height of the taller
+  // case everywhere and top-align the row, rather than letting Bootstrap centre
+  // it against whatever the brand happens to be.
   > .container {
+    align-items: flex-start;
+    min-height: 4.35rem;
     padding-bottom: 0.6rem;
     padding-top: 0.6rem;
-  }
 
-  > .container:has(.navbar-brand.title) {
-    align-items: flex-start;
-
+    // Drops the links onto the baseline of the brand's first line.
     #navbarNav {
       padding-top: 0.2rem;
     }
