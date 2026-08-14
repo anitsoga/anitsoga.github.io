@@ -1,3 +1,1 @@
-Alessandro Breccia
-
-<!-- TODO: add bio. -->
+Alessandro Breccia studied Physics and Machine Learning at the University of Padua, completing his Master's thesis in collaboration with ETH Zurich. He works at the intersection of Theoretical Neuroscience and Machine Learning, using tools from Statistical Physics. His main research interests are feature learning dynamics in deep learning, learning theory for RNNs using Dynamical Mean Field Theory and Continual Learning.
