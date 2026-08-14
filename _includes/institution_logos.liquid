@@ -1,0 +1,30 @@
+{% comment %}
+  Institutional logos, top right of every page (see _layouts/default.liquid).
+  The UCL mark is a single-colour logo, so it ships in two variants and the
+  theme swaps them: .only-light / .only-dark are defined in _sass/_themes.scss.
+  The Gatsby logo reads correctly on both backgrounds, so it needs no variant.
+{% endcomment %}
+<div class="institution-logos">
+  <a href="https://www.ucl.ac.uk" title="University College London">
+    <img
+      class="only-light"
+      src="{{ '/assets/img/ucl_logo_light.png' | relative_url }}"
+      alt="University College London"
+      loading="lazy"
+    >
+    <img
+      class="only-dark"
+      src="{{ '/assets/img/ucl_logo_dark.png' | relative_url }}"
+      alt="University College London"
+      loading="lazy"
+    >
+  </a>
+  <a href="https://www.gatsby.ucl.ac.uk" title="Gatsby Computational Neuroscience Unit">
+    <img
+      class="logo-gatsby"
+      src="{{ '/assets/img/gatsby_logo.png' | relative_url }}"
+      alt="Gatsby Computational Neuroscience Unit"
+      loading="lazy"
+    >
+  </a>
+</div>

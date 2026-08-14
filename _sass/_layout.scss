@@ -19,7 +19,13 @@ body {
 
 body.fixed-top-nav {
   // Add some padding for the nav-bar.
-  padding-top: 56px;
+  padding-top: 76px;
+}
+
+// Pages other than About carry the two-line lab name in the navbar, which makes
+// it taller than the 56px above; without this the page would start underneath.
+body.fixed-top-nav:has(.navbar-brand.title) {
+  padding-top: 86px;
 }
 
 body.sticky-bottom-footer {

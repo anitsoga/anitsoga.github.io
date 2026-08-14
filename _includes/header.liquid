@@ -1,6 +1,13 @@
 <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
+  {% comment %}
+    expand-lg rather than the theme default expand-sm: the lab name plus seven
+    nav items, the search button and the theme toggle need about 840px, so below
+    992px they collapse into the hamburger menu instead of overflowing. At
+    expand-sm the row silently clipped the theme toggle and squeezed the search
+    button until "ctrl k" wrapped one character per line.
+  {% endcomment %}
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
       {% if page.permalink != '/' %}
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">

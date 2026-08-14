@@ -9,8 +9,7 @@ profile:
   image: Buddha_Big.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>Gatsby Unit at the Sainsbury Wellcome Centre</p>
-    <p>London, UK</p>
+    <p>Gatsby Unit at the SWC, University College London</p>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"

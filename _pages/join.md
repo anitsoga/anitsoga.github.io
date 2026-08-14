@@ -8,6 +8,8 @@ nav_order: 6
 
 We are always looking for highly motivated and committed theoreticians and computer scientists.
 
+{% include figure.liquid loading="eager" path="assets/img/lab_photo.jpg" class="img-fluid rounded z-depth-1" alt="Members of the lab together at a lab gathering" caption="Lab and friends, December 2025" %}
+
 ## Postdocs
 {:.subsection-title}
 

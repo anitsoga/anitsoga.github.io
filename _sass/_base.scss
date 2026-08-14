@@ -257,6 +257,41 @@ ul.task-list input[type="checkbox"] {
   margin-top: 0;
 }
 
+// Institutional logos, top right of every page.
+
+.institution-logos {
+  align-items: center;
+  display: flex;
+  gap: 1.25rem;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+
+  img {
+    height: 34px;
+    width: auto;
+  }
+
+  // The Gatsby mark carries more internal whitespace than the UCL block, so at
+  // equal heights it reads smaller. Size it up to balance the pair optically.
+  .logo-gatsby {
+    height: 58px;
+  }
+}
+
+@media (max-width: 575px) {
+  .institution-logos {
+    gap: 1rem;
+
+    img {
+      height: 26px;
+    }
+
+    .logo-gatsby {
+      height: 44px;
+    }
+  }
+}
+
 // Embedded map (Contact page). Fixed height with fluid width, rather than the
 // 600x450 Google's embed code hands you, which overflows on a phone.
 .map-embed {
@@ -440,6 +475,39 @@ ul.task-list input[type="checkbox"] {
     color: var(--global-text-color);
   }
 
+  // The lab name only appears in the navbar on pages other than About, and it
+  // is long enough that, alongside seven nav items, flexbox shrank the search
+  // button until "ctrl k" wrapped one character per line. Setting it over two
+  // lines gives the nav row back the ~100px it needs.
+  .navbar-brand.title {
+    line-height: 1.15;
+    white-space: normal;
+
+    .font-weight-bold {
+      display: block;
+      white-space: nowrap;
+    }
+  }
+
+  // With a two-line brand, Bootstrap's centring drops the nav links level with
+  // the gap between the lines. Top-align the row instead so they sit on the
+  // first line, and nudge them down to share its baseline. Scoped with :has()
+  // so the About page, whose brand is the social icons, keeps its centring.
+  // Bootstrap's default navbar is tight to the top edge; give every page the
+  // same breathing room above and below the nav row.
+  > .container {
+    padding-bottom: 0.6rem;
+    padding-top: 0.6rem;
+  }
+
+  > .container:has(.navbar-brand.title) {
+    align-items: flex-start;
+
+    #navbarNav {
+      padding-top: 0.2rem;
+    }
+  }
+
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
 
@@ -542,6 +610,9 @@ ul.task-list input[type="checkbox"] {
   border: 0;
   background-color: inherit;
   color: var(--global-text-color);
+  // Belt and braces with the two-line brand above: the shortcut hint must never
+  // be allowed to wrap, however tight the navbar gets.
+  white-space: nowrap;
 
   &:hover {
     color: var(--global-hover-color);
