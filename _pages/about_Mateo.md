@@ -1,3 +1,1 @@
-Mateo Amortegui Cifuentes
-
-<!-- TODO: add bio. -->
+Mateo Amortegui Cifuentes is motivated by identifying which computations are useful models of how the brain learns about value, makes value-based decisions and controls motivated behaviours, such as approaching or avoiding rewards and punishments, and by finding biologically plausible circuit-level implementations of those computations. He joined the Gatsby Unit after completing the French–Italian Master’s in Physics of Complex Systems.
