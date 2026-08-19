@@ -64,7 +64,7 @@ profile_sections:
       # Students based in other labs, collaborating on projects: no photo or bio.
       - title: Affiliated PhD Students
         people:
-          - name: QianQian Feng
+          - name: Qianqian Feng
             affiliation: "Sahani's Lab"
           - name: Mohadeseh Shafiei Kafraj
             affiliation: "Latham's Lab"
