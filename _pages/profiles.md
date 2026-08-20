@@ -77,18 +77,14 @@ profile_sections:
         affiliation: >-
           Institute for Advanced Simulation (IAS-6), Jülich Research Centre &
           Faculty of Physics, RWTH Aachen University
-        url: https://www.fz-juelich.de/profile/helias_m
       - name: Adil Khan
         affiliation: >-
           Institute of Psychiatry, Psychology & Neuroscience, King's College
           London
-        url: https://www.kcl.ac.uk/people/adil-khan
       - name: Kenneth D. Miller
         affiliation: Center for Theoretical Neuroscience, Columbia University
-        url: https://zuckermaninstitute.columbia.edu/kenneth-d-miller-phd
       - name: Arthur Pellegrino
         affiliation: Data Science Center, École Normale Supérieure, PSL
-        url: https://sites.google.com/view/arthur-pellegrino/home
 
   - title: Past Members
     subsections:
