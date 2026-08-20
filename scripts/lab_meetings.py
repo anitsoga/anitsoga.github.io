@@ -77,13 +77,23 @@ def cell(row, index):
 
 
 HEADER_ALIASES = {
-    "date": "date", "day": "date", "when": "date",
+    "date": "date", "day": "date", "when": "date", "talk date": "date",
     "time": "time", "hora": "time", "start": "time",
     "who": "who", "presenter": "who", "speaker": "who", "name": "who",
-    "topic": "topic", "title": "topic",
-    "link": "link", "url": "link",
+    "presenter's name": "who",
+    "topic": "topic", "title": "topic", "presentation title": "topic",
+    "link": "link", "url": "link", "links": "link",
     "notes": "notes", "note": "notes",
+    # Read so their columns are not mistaken for something else. The addresses
+    # are deliberately never written to _data/, which is a public repo.
+    "email": "email", "emails": "email",
+    "reminder": "reminder", "reminder email date": "reminder",
 }
+
+
+def header_key(value):
+    """Normalise a header cell: trim, lowercase, and flatten curly apostrophes."""
+    return str(value or "").strip().lower().replace("\u2019", "'")
 
 TIME_RE = re.compile(r"^\d{1,2}[:.]\d{2}(\s*[ap]\.?m\.?)?$|^\d{1,2}\s*[ap]\.?m\.?$", re.I)
 
@@ -94,7 +104,7 @@ def detect_columns(rows):
     for row in rows:
         found = {}
         for index, value in enumerate(row):
-            key = HEADER_ALIASES.get(value.strip().lower())
+            key = HEADER_ALIASES.get(header_key(value))
             if key and key not in found:
                 found[key] = index
         if "who" in found:
@@ -177,7 +187,6 @@ def render_yaml(entries):
         lines.append(f"  reason: {yaml_quote(e['reason'])}")
         lines.append(f"  topic: {yaml_quote(e['topic'])}")
         lines.append(f"  link: {yaml_quote(e['link'])}")
-        lines.append(f"  notes: {yaml_quote(e['notes'])}")
     return "\n".join(lines) + "\n"
 
 
