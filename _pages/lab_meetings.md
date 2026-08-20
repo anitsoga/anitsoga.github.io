@@ -20,11 +20,6 @@ noindex: true # and ask search engines not to index it
 
 <p class="meeting-subscribe">
   <a href="https://calendar.google.com/calendar/r?cid=ZjVjOTQ4OGY3NjliMzEzODVhNDczOTk5OTliZjdhMzQ1ODQ0NzE2NzRmMzNiYzgyMzg2YzQ3NDI0MTFiZTlkZEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t">Add the lab calendar to Google Calendar</a>
-  <span>
-    One click, and it stays up to date by itself. Using Outlook or Calendar.app
-    instead? Subscribe to <a href="https://calendar.google.com/calendar/ical/f5c9488f769b31385a47399999bf7a34584471674f33bc82386c4742411be9dd%40group.calendar.google.com/public/basic.ics">this address</a> — paste it into your
-    calendar's "subscribe by URL", rather than downloading it.
-  </span>
 </p>
 
 {% if upcoming.size == 0 %}
@@ -54,11 +49,6 @@ noindex: true # and ask search engines not to index it
 <style>
   .meeting-subscribe {
     margin-bottom: 2rem;
-  }
-  .meeting-subscribe span {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--global-text-color-light);
   }
   .meeting-table {
     width: 100%;
