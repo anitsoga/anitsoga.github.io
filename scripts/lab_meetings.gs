@@ -6,8 +6,14 @@
  * changes immediately. Runs inside the lab's own Google account on a daily
  * trigger: no API keys, no service account, nothing stored outside Google.
  *
- * The website page and the .ics feed are generated separately by
- * scripts/lab_meetings.py from the same sheet, and follow the same rules.
+ * The website page at palmigianolab.com/meetings is generated separately by
+ * scripts/lab_meetings.py from the same sheet, following the same rules. That
+ * script deliberately emits no .ics: this calendar is the only one, so the two
+ * cannot drift apart.
+ *
+ * NOTE: this file is a version-controlled copy. The code that actually runs
+ * lives in the Apps Script editor, and nothing syncs between them — after
+ * editing here, paste it back in, and vice versa.
  *
  * WHICH ACCOUNT TO RUN IT AS
  *   Authorising this grants access to *all* of that account's calendars and
@@ -47,6 +53,15 @@ const DURATION_MINUTES = 60;
 const LOCATION = "Gatsby seminar room";
 const SCHEDULE_URL = "https://palmigianolab.com/meetings/";
 
+// Used only when a row has no explicit date in the "Reminder email date" column.
+const REMINDER_DAYS = 10;
+
+// Signs the reminders, and shown as the sender's name in the recipient's inbox.
+const SENDER_NAME = "PalmiBot";
+const MEETING_NAME = "Agos' lab meeting";
+const SHEET_URL =
+  "https://docs.google.com/spreadsheets/d/" + SHEET_ID + "/edit?gid=" + SHEET_GID;
+
 // Stamped on every event this script creates, so it only ever touches its own
 // entries and leaves deadlines, socials and anything hand-added alone.
 const TAG_KEY = "labMeetingSync";
@@ -56,13 +71,21 @@ const CANCELLED_RE = /^\s*(cancell?ed|no lab meeting|summer break)\b/i;
 const TIME_RE = /^\d{1,2}[:.]\d{2}(\s*[ap]\.?m\.?)?$|^\d{1,2}\s*[ap]\.?m\.?$/i;
 
 const HEADER_ALIASES = {
-  date: "date", day: "date", when: "date",
+  date: "date", day: "date", when: "date", "talk date": "date",
   time: "time", hora: "time", start: "time",
   who: "who", presenter: "who", speaker: "who", name: "who",
-  topic: "topic", title: "topic",
-  link: "link", url: "link",
+  "presenter's name": "who",
+  topic: "topic", title: "topic", "presentation title": "topic",
+  link: "link", url: "link", links: "link",
   notes: "notes", note: "notes",
+  email: "email", emails: "email",
+  reminder: "reminder", "reminder email date": "reminder",
 };
+
+/** Trim, lowercase and flatten curly apostrophes, so "Presenter's Name" matches. */
+function headerKey(value) {
+  return String(value || "").trim().toLowerCase().replace(/\u2019/g, "'");
+}
 
 // --- reading the sheet --------------------------------------------------
 
@@ -102,7 +125,7 @@ function detectColumns(rows) {
   for (let r = 0; r < rows.length && !columns; r++) {
     const found = {};
     rows[r].forEach(function (value, index) {
-      const key = HEADER_ALIASES[String(value || "").trim().toLowerCase()];
+      const key = HEADER_ALIASES[headerKey(value)];
       if (key && !(key in found)) found[key] = index;
     });
     if ("who" in found) columns = found;
@@ -157,6 +180,11 @@ function parseSchedule(rows) {
       who: who,
       topic: get(row, "topic"),
       notes: get(row, "notes"),
+      email: get(row, "email"),
+      // Column E holds an explicit reminder date; fall back to REMINDER_DAYS before.
+      reminder: "reminder" in columns
+        ? toDate(row[columns.reminder]) || addDays(date, -REMINDER_DAYS)
+        : addDays(date, -REMINDER_DAYS),
       cancelled: cancelled,
       reason: reason,
     });
@@ -266,6 +294,186 @@ function syncLabMeetings() {
   return summary;
 }
 
+// --- reminder emails ----------------------------------------------------
+
+function addDays(date, days) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
+}
+
+function startOfToday() {
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate());
+}
+
+function longDate(date) {
+  return Utilities.formatDate(date, Session.getScriptTimeZone(), "EEEE d MMMM yyyy");
+}
+
+/** A cell may hold several addresses, comma or semicolon separated. */
+function recipientsFor(value) {
+  return String(value || "")
+    .split(/[,;]+/)
+    .map(function (part) { return part.trim(); })
+    .filter(function (part) { return /^[^@\s,;]+@[^@\s,;]+\.[^@\s,;]+$/.test(part); });
+}
+
+function reminderSubject(entry) {
+  return "You are presenting on " + longDate(entry.date);
+}
+
+function timeOf(entry) {
+  return ("0" + entry.hours).slice(-2) + ":" + ("0" + entry.minutes).slice(-2);
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** The greeting and first sentence, shared by the plain-text and HTML versions. */
+function reminderOpening(entry) {
+  const when = longDate(entry.date) + " at " + timeOf(entry);
+  // A group slot puts the session description in the name column, not a person.
+  if (recipientsFor(entry.email).length > 1) {
+    return "Hi all,\n\nYou are scheduled to present in " + MEETING_NAME + " on " +
+      when + ": " + entry.who + ".";
+  }
+  return "Hi " + entry.who + ",\n\nYou are scheduled to present in " + MEETING_NAME +
+    " on " + when + ". " +
+    (entry.topic
+      ? "The current title of your talk is " + entry.topic + "."
+      : "The spreadsheet does not have a title for your talk yet — please add one.");
+}
+
+const REMINDER_TAIL =
+  " If you can no longer make this date please find someone that is willing to " +
+  "swap with you and modify the ";
+
+function reminderBody(entry) {
+  return (
+    reminderOpening(entry) + REMINDER_TAIL + "Schedule sheet (" + SHEET_URL + ").\n\n" +
+    "Cheers!\n\n" + SENDER_NAME
+  );
+}
+
+/** Same words, with "Schedule sheet" as a link. */
+function reminderHtml(entry) {
+  const paragraphs = escapeHtml(reminderOpening(entry)).split("\n\n");
+  const link = '<a href="' + SHEET_URL + '">Schedule sheet</a>';
+  return (
+    "<p>" + paragraphs[0] + "</p>" +
+    "<p>" + paragraphs.slice(1).join(" ") + escapeHtml(REMINDER_TAIL) + link + ".</p>" +
+    "<p>Cheers!</p><p>" + SENDER_NAME + "</p>"
+  );
+}
+
+/** Meetings still to come that have a usable address. */
+function reminderCandidates() {
+  const today = startOfToday();
+  return parseSchedule(readRows()).filter(function (entry) {
+    return !entry.cancelled && entry.date >= today && recipientsFor(entry.email).length > 0;
+  });
+}
+
+function reminderKey(entry) {
+  return "reminded:" + Utilities.formatDate(entry.date, Session.getScriptTimeZone(), "yyyy-MM-dd");
+}
+
+/**
+ * DRY RUN — sends nothing. Lists every upcoming presenter, the address the
+ * reminder would go to, when it would be sent, and whether it already has been.
+ * Run this after editing the sheet to check each name lines up with its address.
+ */
+function previewPresenterReminders() {
+  const today = startOfToday();
+  const sent = PropertiesService.getScriptProperties();
+  const lines = reminderCandidates().map(function (entry) {
+    const due = entry.reminder <= today;
+    const already = sent.getProperty(reminderKey(entry)) !== null;
+    return "  " + Utilities.formatDate(entry.date, Session.getScriptTimeZone(), "yyyy-MM-dd") +
+      "  " + (entry.who + "                    ").slice(0, 20) +
+      "  -> " + recipientsFor(entry.email).join(", ") +
+      "   reminder " + Utilities.formatDate(entry.reminder, Session.getScriptTimeZone(), "yyyy-MM-dd") +
+      (already ? "   [already sent]" : due ? "   [DUE — would send now]" : "");
+  });
+  const message =
+    "DRY RUN, nothing sent. " + lines.length + " upcoming presenters with an address:\n" +
+    lines.join("\n") +
+    "\n\nCheck each name matches its address before running sendPresenterReminders.";
+  console.log(message);
+  return message;
+}
+
+/**
+ * Emails whoever is due a reminder, once each. Sends from the account running
+ * the script — no password anywhere; Gmail is reached through the same
+ * authorisation you granted, not a stored credential.
+ *
+ * A reminder goes out when its date in column E has arrived (or, with that cell
+ * empty, REMINDER_DAYS before the talk) and the talk has not yet happened. The
+ * "already sent" note lives in script properties, so a missed night is caught up
+ * the next morning rather than skipped, and nobody is emailed twice.
+ */
+function sendPresenterReminders() {
+  const today = startOfToday();
+  const sent = PropertiesService.getScriptProperties();
+  const done = [];
+
+  reminderCandidates().forEach(function (entry) {
+    if (entry.reminder > today) return;           // not due yet
+    const key = reminderKey(entry);
+    if (sent.getProperty(key) !== null) return;   // already reminded
+
+    MailApp.sendEmail(recipientsFor(entry.email).join(","), reminderSubject(entry),
+      reminderBody(entry), { htmlBody: reminderHtml(entry), name: SENDER_NAME });
+    sent.setProperty(key, Utilities.formatDate(today, Session.getScriptTimeZone(), "yyyy-MM-dd"));
+    done.push(entry.who + " <" + entry.email + "> for " + longDate(entry.date));
+  });
+
+  const message = done.length
+    ? "Sent " + done.length + " reminder(s):\n  " + done.join("\n  ")
+    : "No reminders due today.";
+  console.log(message);
+  return message;
+}
+
+/**
+ * Sends one sample reminder to yourself, built from the next upcoming presenter.
+ * Changes nothing: the sheet is untouched, no sent-mark is recorded, and the
+ * real recipients are not contacted. Use this to see the wording rather than
+ * faking a row in the spreadsheet.
+ */
+function sendTestReminder() {
+  const entry = reminderCandidates()[0];
+  if (!entry) {
+    console.log("Nothing upcoming with an address — nothing to preview.");
+    return;
+  }
+  const me = Session.getEffectiveUser().getEmail();
+  const note =
+    "TEST COPY — this went only to you, and no sent-mark was recorded.\n" +
+    "The real one goes to " + recipientsFor(entry.email).join(", ") +
+    " on " + longDate(entry.reminder) + ".\n" +
+    "----------------------------------------\n\n";
+  MailApp.sendEmail(me, "[TEST] " + reminderSubject(entry), note + reminderBody(entry), {
+    htmlBody: "<p style=\"color:#888\">" + escapeHtml(note).replace(/\n/g, "<br>") + "</p>" +
+      reminderHtml(entry),
+    name: SENDER_NAME,
+  });
+  console.log("Test reminder sent to " + me + ", for " + entry.who + "'s talk.");
+}
+
+/**
+ * Forgets which reminders have been sent, so they can go out again. Only useful
+ * if something went wrong and you want to re-send — normally leave alone.
+ */
+function resetReminderMemory() {
+  const properties = PropertiesService.getScriptProperties();
+  const keys = properties.getKeys().filter(function (k) { return k.indexOf("reminded:") === 0; });
+  keys.forEach(function (k) { properties.deleteProperty(k); });
+  console.log("Cleared " + keys.length + " sent-reminder marks.");
+}
+
 /**
  * Diagnostic: lists every calendar this account can reach, with its id and
  * whether this account may edit it. Run this when syncLabMeetings reports
@@ -304,13 +512,20 @@ function checkTimeZone() {
   return message;
 }
 
-/** Run once: sync every night. Safe to re-run, it replaces its own trigger. */
+/**
+ * Run once: sync the calendar nightly and send reminders each morning.
+ * Safe to re-run — it replaces its own triggers rather than adding more.
+ */
 function installDailyTrigger() {
+  const handlers = ["syncLabMeetings", "sendPresenterReminders"];
   ScriptApp.getProjectTriggers().forEach(function (trigger) {
-    if (trigger.getHandlerFunction() === "syncLabMeetings") {
+    if (handlers.indexOf(trigger.getHandlerFunction()) !== -1) {
       ScriptApp.deleteTrigger(trigger);
     }
   });
   ScriptApp.newTrigger("syncLabMeetings").timeBased().atHour(5).everyDays(1).create();
-  console.log("Daily trigger installed — syncLabMeetings runs about 05:00.");
+  ScriptApp.newTrigger("sendPresenterReminders").timeBased().atHour(9).everyDays(1).create();
+  console.log(
+    "Triggers installed — syncLabMeetings about 05:00, sendPresenterReminders about 09:00."
+  );
 }
