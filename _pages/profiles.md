@@ -77,6 +77,11 @@ profile_sections:
         affiliation: >-
           Institute for Advanced Simulation (IAS-6), Jülich Research Centre &
           Faculty of Physics, RWTH Aachen University
+      - name: Adil Khan
+        affiliation: >-
+          Institute of Psychiatry, Psychology & Neuroscience, King's College
+          London
+        url: https://www.kcl.ac.uk/people/adil-khan
       - name: Kenneth D. Miller
         affiliation: Center for Theoretical Neuroscience, Columbia University
       - name: Arthur Pellegrino
