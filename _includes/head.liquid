@@ -1,6 +1,11 @@
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
+<!-- Unlisted pages: reachable by URL, but not indexed. -->
+{% if page.noindex %}
+  <meta name="robots" content="noindex, nofollow">
+{% endif %}
+
 <!-- Bootstrap & MDB -->
 <link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url | bust_file_cache }}">
 <link
