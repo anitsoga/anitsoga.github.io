@@ -86,10 +86,12 @@ jobs:
           valueFile: "_config.yml"
           propertyPath: "giscus.repo"
           value: ${{ github.repository }}
-      - name: Refresh lab meetings from the sheet 📅
-        # --allow-stale: if the sheet is unreachable, fall back to the copy in the
+      - name: Refresh from Google 📄
+        # --allow-stale: if Google is unreachable, fall back to the copies in the
         # repo rather than failing an otherwise unrelated deploy.
-        run: python3 scripts/lab_meetings.py --allow-stale
+        run: |
+          python3 scripts/lab_meetings.py --allow-stale
+          python3 scripts/start_at_gatsby.py --allow-stale
 
       - name: Install and Build 🔧
         run: |
