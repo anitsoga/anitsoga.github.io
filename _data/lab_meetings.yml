@@ -327,10 +327,10 @@
   display: "10 September 2026"
   weekday: "Thursday"
   time: "13:00"
-  cancelled: false
-  who: "Ravi Thakrar"
+  cancelled: true
+  who: ""
   reason: ""
-  topic: "Intrinsic geometry of motor cortex over long periods of time"
+  topic: ""
   link: ""
 - date: 2026-09-17
   ymd: 20260917
@@ -340,7 +340,7 @@
   cancelled: false
   who: "Jan Bauer"
   reason: ""
-  topic: "Tensor Networks and compositionality"
+  topic: "Alignement transition to feature learning"
   link: ""
 - date: 2026-09-24
   ymd: 20260924
@@ -348,7 +348,7 @@
   weekday: "Thursday"
   time: "13:00"
   cancelled: false
-  who: "Jan Bauer, Alessandro Breccia, Jake Laherty, Hantao Zheng, Matthew Tilley"
+  who: "Jan Bauer, Alessandro Breccia, Jake Laherty, Hantao Zhang, Matthew Tilley"
   reason: ""
   topic: "15 min presentation of all Bersntein posters"
   link: ""
@@ -418,7 +418,7 @@
   weekday: "Thursday"
   time: "13:00"
   cancelled: false
-  who: "Hantao Zheng"
+  who: "Hantao Zhang"
   reason: ""
   topic: "Modern models of working memory"
   link: ""
