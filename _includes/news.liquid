@@ -1,5 +1,91 @@
+{% comment %}
+  News items.
+
+  Called plainly (the About page, with limit=true) this renders one table, newest
+  first, as it always has.
+
+  Called with split=true (the News page) it splits into Upcoming and Past around
+  the build date. Dates are compared as plain numbers — 20261001 and so on —
+  because Liquid has no date comparison of its own. "Today" is the moment the
+  site was built, and the site rebuilds every morning on a schedule, so an item
+  moves from Upcoming to Past on the day it happens without anyone editing it.
+{% endcomment %}
+
+{% assign today = site.time | date: '%Y%m%d' | plus: 0 %}
+
+{% capture news_table %}
+  {% for item in include.items %}
+    <tr>
+      <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
+      <td>
+        {% if item.inline %}
+          {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+        {% else %}
+          <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+{% endcapture %}
+
 <div class="news">
-  {% if site.news != blank %}
+  {% if site.news == blank %}
+    <p>No news so far...</p>
+
+  {% elsif include.split %}
+    {% assign upcoming = '' | split: '' %}
+    {% assign past = '' | split: '' %}
+    {% for item in site.news %}
+      {% assign item_day = item.date | date: '%Y%m%d' | plus: 0 %}
+      {% if item_day >= today %}
+        {% assign upcoming = upcoming | push: item %}
+      {% else %}
+        {% assign past = past | push: item %}
+      {% endif %}
+    {% endfor %}
+
+    {% if upcoming.size > 0 %}
+      <h2 class="people-section">Upcoming</h2>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless">
+          {% for item in upcoming %}
+            <tr>
+              <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
+              <td>
+                {% if item.inline %}
+                  {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                {% else %}
+                  <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    {% endif %}
+
+    {% if past.size > 0 %}
+      <h2 class="people-section">Past</h2>
+      <div class="table-responsive">
+        <table class="table table-sm table-borderless">
+          {% assign past_newest_first = past | reverse %}
+          {% for item in past_newest_first %}
+            <tr>
+              <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
+              <td>
+                {% if item.inline %}
+                  {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                {% else %}
+                  <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    {% endif %}
+
+  {% else %}
     {% assign news_size = site.news | size %}
     <div
       class="table-responsive"
@@ -28,7 +114,5 @@
         {% endfor %}
       </table>
     </div>
-  {% else %}
-    <p>No news so far...</p>
   {% endif %}
 </div>
